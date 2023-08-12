@@ -1,0 +1,7 @@
+python==3.11.4
+Tensorflow==2.13
+matplotlib==3.7.2
+win32gui
+streamlit==1.25.0
+streamlit-drawable-canvas==0.9.3
+sklearn==0.0.post7
