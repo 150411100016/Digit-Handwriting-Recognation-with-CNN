@@ -1,16 +1,16 @@
 import streamlit as st
 
-from tensorflow import keras
-from tensorflow.keras.datasets import mnist
-from tensorflow.keras.models import load_model
+# from tensorflow import keras
+# from tensorflow.keras.datasets import mnist
+# from tensorflow.keras.models import load_model
 
-import matplotlib.pyplot as plt
-import math
+# import matplotlib.pyplot as plt
+# import math
 
-import os
-from PIL import Image
-import random
-import numpy as np
+# import os
+# from PIL import Image
+# import random
+# import numpy as np
 
 # CONFIG
 st.set_page_config(
@@ -39,26 +39,26 @@ st.sidebar.title ("Handwritten Digit Recognation with CNN")
 
 # DATASET
 # Pre Process Image
-directory = os.getcwd()
-path = os.path.join(directory, "assets\dataset\dataset_kaggle")
-dir_list = os.listdir(path)
+# directory = os.getcwd()
+# path = os.path.join(directory, "assets\dataset\dataset_kaggle")
+# dir_list = os.listdir(path)
 
-x_test = []
-y_test = []
+# x_test = []
+# y_test = []
 
-digit = 0
-for dir in dir_list:
-    url = os.path.join(path, dir)
-    dir_img = os.listdir(url)
-    length_img = int(len(dir_img))
-    rnumber = [random.randint(0, length_img-1) for x in range(5)]
-    for index in rnumber:
-        x_test.append(os.path.join(url, dir_img[index]))
-        y_test.append(digit)
-    digit += 1
-numbers_to_display = 50
+# digit = 0
+# for dir in dir_list:
+#     url = os.path.join(path, dir)
+#     dir_img = os.listdir(url)
+#     length_img = int(len(dir_img))
+#     rnumber = [random.randint(0, length_img-1) for x in range(5)]
+#     for index in rnumber:
+#         x_test.append(os.path.join(url, dir_img[index]))
+#         y_test.append(digit)
+#     digit += 1
+# numbers_to_display = 50
 
-app_mode = st.sidebar.selectbox('Select Menu',['Abstract','Environment','Dataset','Training Model','Result','Improvement','Conclusion', 'Literature','Author'])
+app_mode = st.sidebar.selectbox('Select Menu',['Abstract','Environment','Dataset','Training Model','Improvement','Conclusion', 'Literature','Author'])
 if app_mode=='Abstract':    
     st.title('Abstract')
     st.divider()      
@@ -252,287 +252,287 @@ elif app_mode == 'Training Model':
     plt.ylabel("Akurasi dalam %")
     plt.title("Akurasi setiap kenaikan Epoch")
     st.pyplot(plt.show())
-elif app_mode == 'Result':      
-    st.title('Result')
-    st.divider()
-    st.markdown('''
-            <div style="text-align: justify;">
-                &nbsp;&nbsp;&nbsp;Berdasarkan training model yang telah kita lakukan pada sub menu sebelumnya, diperoleh 6 model yang memiliki jumlah Epoch yang berbeda. Selanjutnya mari kita uji masing-masing model menggunakan 50 dataset random dari <a href="https://www.kaggle.com/competitions/digit-recognizer">kaggle</a>. Dataset random yang digunakan pada masing-masing model adalah sama.
-            </div>
-    ''', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-            <div style="text-align: center;">
-                Dataset Testing
-            </div>
-    ''', unsafe_allow_html=True)
-    st.title('')
-    plt.figure(figsize=(10,10))
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
+# elif app_mode == 'Result':      
+#     st.title('Result')
+#     st.divider()
+#     st.markdown('''
+#             <div style="text-align: justify;">
+#                 &nbsp;&nbsp;&nbsp;Berdasarkan training model yang telah kita lakukan pada sub menu sebelumnya, diperoleh 6 model yang memiliki jumlah Epoch yang berbeda. Selanjutnya mari kita uji masing-masing model menggunakan 50 dataset random dari <a href="https://www.kaggle.com/competitions/digit-recognizer">kaggle</a>. Dataset random yang digunakan pada masing-masing model adalah sama.
+#             </div>
+#     ''', unsafe_allow_html=True)
+#     st.title('')
+#     st.markdown('''
+#             <div style="text-align: center;">
+#                 Dataset Testing
+#             </div>
+#     ''', unsafe_allow_html=True)
+#     st.title('')
+#     plt.figure(figsize=(10,10))
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(img, cmap=plt.cm.binary)
-        plt.xlabel(y_test[i])
-    st.pyplot(plt.show())
-    st.title('')
-    st.markdown('''
-        <ul style="list-style-type:disc">
-            <li>10 Epoch</li>
-        </ul>
-''', unsafe_allow_html=True)
-    st.title('')
-    model_10 = load_model('model/models/mnist_'+str(10)+'_epochs.h5')
-    plt.figure(figsize=(10,10))
-    avg_10 = 0
-    benar_10 = 0
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
-        images = img
-        img = img.convert('L')
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(img, cmap=plt.cm.binary)
+#         plt.xlabel(y_test[i])
+#     st.pyplot(plt.show())
+#     st.title('')
+#     st.markdown('''
+#         <ul style="list-style-type:disc">
+#             <li>10 Epoch</li>
+#         </ul>
+# ''', unsafe_allow_html=True)
+#     st.title('')
+#     model_10 = load_model('model/models/mnist_'+str(10)+'_epochs.h5')
+#     plt.figure(figsize=(10,10))
+#     avg_10 = 0
+#     benar_10 = 0
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
+#         images = img
+#         img = img.convert('L')
 
-        # predict
-        img = np.array(img)
-        img = img.reshape(1,28,28,1)
-        img = img/255.0
+#         # predict
+#         img = np.array(img)
+#         img = img.reshape(1,28,28,1)
+#         img = img/255.0
 
-        res = model_10.predict([img])[0]
-        acc = str(int(max(res)*100))
+#         res = model_10.predict([img])[0]
+#         acc = str(int(max(res)*100))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(images, cmap=plt.cm.binary)
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(images, cmap=plt.cm.binary)
 
-        text = str(np.argmax(res))+", "+str(acc)+"%"
-        avg_10 += int(max(res)*100)
+#         text = str(np.argmax(res))+", "+str(acc)+"%"
+#         avg_10 += int(max(res)*100)
 
-        if str(np.argmax(res)) == str(y_test[i]) :
-            benar_10 += 1
+#         if str(np.argmax(res)) == str(y_test[i]) :
+#             benar_10 += 1
 
-        plt.xlabel(str(np.argmax(res)))
-    st.pyplot(plt.show())
-    st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_10/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-        <ul style="list-style-type:disc">
-            <li>20 Epoch</li>
-        </ul>
-''', unsafe_allow_html=True)
-    st.title('')
-    model_20 = load_model('model/models/mnist_'+str(20)+'_epochs.h5')
-    plt.figure(figsize=(10,10))
-    avg_20 = 0
-    benar_20 = 0
+#         plt.xlabel(str(np.argmax(res)))
+#     st.pyplot(plt.show())
+#     st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_10/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
+#     st.title('')
+#     st.markdown('''
+#         <ul style="list-style-type:disc">
+#             <li>20 Epoch</li>
+#         </ul>
+# ''', unsafe_allow_html=True)
+#     st.title('')
+#     model_20 = load_model('model/models/mnist_'+str(20)+'_epochs.h5')
+#     plt.figure(figsize=(10,10))
+#     avg_20 = 0
+#     benar_20 = 0
 
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
-        images = img
-        img = img.convert('L')
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
+#         images = img
+#         img = img.convert('L')
 
-        # predict
-        img = np.array(img)
-        img = img.reshape(1,28,28,1)
-        img = img/255.0
+#         # predict
+#         img = np.array(img)
+#         img = img.reshape(1,28,28,1)
+#         img = img/255.0
 
-        res = model_20.predict([img])[0]
-        acc = str(int(max(res)*100))
+#         res = model_20.predict([img])[0]
+#         acc = str(int(max(res)*100))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(images, cmap=plt.cm.binary)
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(images, cmap=plt.cm.binary)
 
-        text = str(np.argmax(res))+", "+str(acc)+"%"
-        avg_20 += int(max(res)*100)
+#         text = str(np.argmax(res))+", "+str(acc)+"%"
+#         avg_20 += int(max(res)*100)
 
-        if str(np.argmax(res)) == str(y_test[i]) :
-            benar_20 += 1
+#         if str(np.argmax(res)) == str(y_test[i]) :
+#             benar_20 += 1
 
-        plt.xlabel(str(np.argmax(res)))
-    st.pyplot(plt.show())
-    # st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(avg_20/len(y_test)))+' %</div>', unsafe_allow_html=True)
-    st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_20/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-        <ul style="list-style-type:disc">
-            <li>40 Epoch</li>
-        </ul>
-''', unsafe_allow_html=True)
-    st.title('')
-    model_40 = load_model('model/models/mnist_'+str(40)+'_epochs.h5')
-    plt.figure(figsize=(10,10))
-    avg_40 = 0
-    benar_40 = 0
+#         plt.xlabel(str(np.argmax(res)))
+#     st.pyplot(plt.show())
+#     # st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(avg_20/len(y_test)))+' %</div>', unsafe_allow_html=True)
+#     st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_20/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
+#     st.title('')
+#     st.markdown('''
+#         <ul style="list-style-type:disc">
+#             <li>40 Epoch</li>
+#         </ul>
+# ''', unsafe_allow_html=True)
+#     st.title('')
+#     model_40 = load_model('model/models/mnist_'+str(40)+'_epochs.h5')
+#     plt.figure(figsize=(10,10))
+#     avg_40 = 0
+#     benar_40 = 0
 
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
-        images = img
-        img = img.convert('L')
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
+#         images = img
+#         img = img.convert('L')
 
-        # predict
-        img = np.array(img)
-        img = img.reshape(1,28,28,1)
-        img = img/255.0
+#         # predict
+#         img = np.array(img)
+#         img = img.reshape(1,28,28,1)
+#         img = img/255.0
 
-        res = model_40.predict([img])[0]
-        acc = str(int(max(res)*100))
+#         res = model_40.predict([img])[0]
+#         acc = str(int(max(res)*100))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(images, cmap=plt.cm.binary)
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(images, cmap=plt.cm.binary)
 
-        text = str(np.argmax(res))+", "+str(acc)+"%"
-        avg_40 += int(max(res)*100)
+#         text = str(np.argmax(res))+", "+str(acc)+"%"
+#         avg_40 += int(max(res)*100)
 
-        if str(np.argmax(res)) == str(y_test[i]) :
-            benar_40 += 1
+#         if str(np.argmax(res)) == str(y_test[i]) :
+#             benar_40 += 1
 
-        plt.xlabel(str(np.argmax(res)))
-    st.pyplot(plt.show())
-    st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_40/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-        <ul style="list-style-type:disc">
-            <li>80 Epoch</li>
-        </ul>
-''', unsafe_allow_html=True)
-    st.title('')
-    model_80 = load_model('model/models/mnist_'+str(80)+'_epochs.h5')
-    plt.figure(figsize=(10,10))
-    avg_80 = 0
-    benar_80 = 0
+#         plt.xlabel(str(np.argmax(res)))
+#     st.pyplot(plt.show())
+#     st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_40/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
+#     st.title('')
+#     st.markdown('''
+#         <ul style="list-style-type:disc">
+#             <li>80 Epoch</li>
+#         </ul>
+# ''', unsafe_allow_html=True)
+#     st.title('')
+#     model_80 = load_model('model/models/mnist_'+str(80)+'_epochs.h5')
+#     plt.figure(figsize=(10,10))
+#     avg_80 = 0
+#     benar_80 = 0
 
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
-        images = img
-        img = img.convert('L')
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
+#         images = img
+#         img = img.convert('L')
 
-        # predict
-        img = np.array(img)
-        img = img.reshape(1,28,28,1)
-        img = img/255.0
+#         # predict
+#         img = np.array(img)
+#         img = img.reshape(1,28,28,1)
+#         img = img/255.0
 
-        res = model_80.predict([img])[0]
-        acc = str(int(max(res)*100))
+#         res = model_80.predict([img])[0]
+#         acc = str(int(max(res)*100))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(images, cmap=plt.cm.binary)
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(images, cmap=plt.cm.binary)
 
-        text = str(np.argmax(res))+", "+str(acc)+"%"
-        avg_80 += int(max(res)*100)
+#         text = str(np.argmax(res))+", "+str(acc)+"%"
+#         avg_80 += int(max(res)*100)
 
-        if str(np.argmax(res)) == str(y_test[i]) :
-            benar_80 += 1
+#         if str(np.argmax(res)) == str(y_test[i]) :
+#             benar_80 += 1
 
-        plt.xlabel(str(np.argmax(res)))
-    st.pyplot(plt.show())
-    st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_80/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-        <ul style="list-style-type:disc">
-            <li>160 Epoch</li>
-        </ul>
-''', unsafe_allow_html=True)
-    st.title('')
-    model_160 = load_model('model/models/mnist_'+str(160)+'_epochs.h5')
-    plt.figure(figsize=(10,10))
-    avg_160 = 0
-    benar_160 = 0
+#         plt.xlabel(str(np.argmax(res)))
+#     st.pyplot(plt.show())
+#     st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_80/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
+#     st.title('')
+#     st.markdown('''
+#         <ul style="list-style-type:disc">
+#             <li>160 Epoch</li>
+#         </ul>
+# ''', unsafe_allow_html=True)
+#     st.title('')
+#     model_160 = load_model('model/models/mnist_'+str(160)+'_epochs.h5')
+#     plt.figure(figsize=(10,10))
+#     avg_160 = 0
+#     benar_160 = 0
 
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
-        images = img
-        img = img.convert('L')
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
+#         images = img
+#         img = img.convert('L')
 
-        # predict
-        img = np.array(img)
-        img = img.reshape(1,28,28,1)
-        img = img/255.0
+#         # predict
+#         img = np.array(img)
+#         img = img.reshape(1,28,28,1)
+#         img = img/255.0
 
-        res = model_160.predict([img])[0]
-        acc = str(int(max(res)*100))
+#         res = model_160.predict([img])[0]
+#         acc = str(int(max(res)*100))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(images, cmap=plt.cm.binary)
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(images, cmap=plt.cm.binary)
 
-        text = str(np.argmax(res))+", "+str(acc)+"%"
-        avg_160 += int(max(res)*100)
+#         text = str(np.argmax(res))+", "+str(acc)+"%"
+#         avg_160 += int(max(res)*100)
 
-        if str(np.argmax(res)) == str(y_test[i]) :
-            benar_160 += 1
+#         if str(np.argmax(res)) == str(y_test[i]) :
+#             benar_160 += 1
 
-        plt.xlabel(str(np.argmax(res)))
-    st.pyplot(plt.show())
-    st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_160/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-        <ul style="list-style-type:disc">
-            <li>320 Epoch</li>
-        </ul>
-''', unsafe_allow_html=True)
-    st.title('')
-    model_320 = load_model('model/models/mnist_'+str(320)+'_epochs.h5')
-    plt.figure(figsize=(10,10))
-    avg_320 = 0
-    benar_320 = 0
+#         plt.xlabel(str(np.argmax(res)))
+#     st.pyplot(plt.show())
+#     st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_160/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
+#     st.title('')
+#     st.markdown('''
+#         <ul style="list-style-type:disc">
+#             <li>320 Epoch</li>
+#         </ul>
+# ''', unsafe_allow_html=True)
+#     st.title('')
+#     model_320 = load_model('model/models/mnist_'+str(320)+'_epochs.h5')
+#     plt.figure(figsize=(10,10))
+#     avg_320 = 0
+#     benar_320 = 0
 
-    for i in range(len(y_test)):
-        img = Image.open(x_test[i])
-        img.convert("1")
-        img = img.resize((28,28))
-        images = img
-        img = img.convert('L')
+#     for i in range(len(y_test)):
+#         img = Image.open(x_test[i])
+#         img.convert("1")
+#         img = img.resize((28,28))
+#         images = img
+#         img = img.convert('L')
 
-        # predict
-        img = np.array(img)
-        img = img.reshape(1,28,28,1)
-        img = img/255.0
+#         # predict
+#         img = np.array(img)
+#         img = img.reshape(1,28,28,1)
+#         img = img/255.0
 
-        res = model_320.predict([img])[0]
-        acc = str(int(max(res)*100))
+#         res = model_320.predict([img])[0]
+#         acc = str(int(max(res)*100))
 
-        plt.subplot(5, 10, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(images, cmap=plt.cm.binary)
+#         plt.subplot(5, 10, i+1)
+#         plt.xticks([])
+#         plt.yticks([])
+#         plt.grid(False)
+#         plt.imshow(images, cmap=plt.cm.binary)
 
-        text = str(np.argmax(res))+", "+str(acc)+"%"
-        avg_320 += int(max(res)*100)
+#         text = str(np.argmax(res))+", "+str(acc)+"%"
+#         avg_320 += int(max(res)*100)
 
-        if str(np.argmax(res)) == str(y_test[i]) :
-            benar_320 += 1
+#         if str(np.argmax(res)) == str(y_test[i]) :
+#             benar_320 += 1
 
-        plt.xlabel(str(np.argmax(res)))
-    st.pyplot(plt.show())
-    st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_320/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
-    st.title('')
+#         plt.xlabel(str(np.argmax(res)))
+#     st.pyplot(plt.show())
+#     st.markdown('<div style="text-align: center;">Accuracy Avg : '+str(float(benar_320/len(y_test))*100)+' %</div>', unsafe_allow_html=True)
+#     st.title('')
 elif app_mode == 'Improvement':      
     st.title('Improvement')
     st.divider()     
