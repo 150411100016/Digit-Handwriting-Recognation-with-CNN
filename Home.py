@@ -228,30 +228,30 @@ elif app_mode == 'Training Model':
     st.code(code, language='python')
     st.title('')
     st.image("assets/screenshoot/model_10 Epoch_1.png", use_column_width=True, caption='Hasil Training Model 10 Epoch')
-    st.title('')
-    st.markdown('''
-            <div style="text-align: justify;">
-                &nbsp;&nbsp;&nbsp;Melihat akurasi model hanya 84%, Author mencoba meningkatkan jumlah Epoch dan menampilkan hasil akurasi masing-masing Epoch untuk melihat hubungan jumlah Epoch dengan akurasi model.
-            </div>
-    ''', unsafe_allow_html=True)
-    st.title('')
-    st.markdown('''
-            <div style="text-align: justify;">
-                &nbsp;&nbsp;&nbsp;Epoch merupakan hyperparameter yang menentukan berapa kali algoritma deep learning bekerja melewati seluruh dataset melalui proses training pada jaringan saraf sampai dikembalikan ke awal untuk sekali putaran. Dalam istilah yang lebih sederhana, Satu Epoch tercapai ketika semua batch telah berhasil dilewatkan melalui jaringan saraf satu kali. 
-            </div>
-    ''', unsafe_allow_html=True)
-    st.title('')
-    courses = ['10','20','40','80','160','320']
-    values = [84.45,89.42,91.83,93.81,95.82,96.93]
+    # st.title('')
+    # st.markdown('''
+    #         <div style="text-align: justify;">
+    #             &nbsp;&nbsp;&nbsp;Melihat akurasi model hanya 84%, Author mencoba meningkatkan jumlah Epoch dan menampilkan hasil akurasi masing-masing Epoch untuk melihat hubungan jumlah Epoch dengan akurasi model.
+    #         </div>
+    # ''', unsafe_allow_html=True)
+    # st.title('')
+    # st.markdown('''
+    #         <div style="text-align: justify;">
+    #             &nbsp;&nbsp;&nbsp;Epoch merupakan hyperparameter yang menentukan berapa kali algoritma deep learning bekerja melewati seluruh dataset melalui proses training pada jaringan saraf sampai dikembalikan ke awal untuk sekali putaran. Dalam istilah yang lebih sederhana, Satu Epoch tercapai ketika semua batch telah berhasil dilewatkan melalui jaringan saraf satu kali. 
+    #         </div>
+    # ''', unsafe_allow_html=True)
+    # st.title('')
+    # courses = ['10','20','40','80','160','320']
+    # values = [84.45,89.42,91.83,93.81,95.82,96.93]
 
-    # creating the bar plot
-    plt.bar(courses, values, color ='blue',
-            width = 0.4)
+    # # creating the bar plot
+    # plt.bar(courses, values, color ='blue',
+    #         width = 0.4)
     
-    plt.xlabel("Epoch")
-    plt.ylabel("Akurasi dalam %")
-    plt.title("Akurasi setiap kenaikan Epoch")
-    st.pyplot(plt.show())
+    # plt.xlabel("Epoch")
+    # plt.ylabel("Akurasi dalam %")
+    # plt.title("Akurasi setiap kenaikan Epoch")
+    # st.pyplot(plt.show())
 # elif app_mode == 'Result':      
 #     st.title('Result')
 #     st.divider()
