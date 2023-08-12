@@ -143,21 +143,21 @@ elif app_mode == 'Dataset':
     print(len(x_test), len(y_test)) #10000 10000
     '''
     st.code(code, language='python')
-    st.title('')
-    st.caption('Contoh 25 Dataset MNIST')
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
-    dataset =  mnist.load_data()
-    numbers_to_display = 25
-    num_cells = math.ceil(math.sqrt(numbers_to_display))
-    plt.figure(figsize=(10,10))
-    for i in range(numbers_to_display):
-        plt.subplot(num_cells, num_cells, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(x_train[i], cmap=plt.cm.binary)
-        plt.xlabel(y_train[i])
-    st.pyplot(plt.show())
+    # st.title('')
+    # st.caption('Contoh 25 Dataset MNIST')
+    # (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    # dataset =  mnist.load_data()
+    # numbers_to_display = 25
+    # num_cells = math.ceil(math.sqrt(numbers_to_display))
+    # plt.figure(figsize=(10,10))
+    # for i in range(numbers_to_display):
+    #     plt.subplot(num_cells, num_cells, i+1)
+    #     plt.xticks([])
+    #     plt.yticks([])
+    #     plt.grid(False)
+    #     plt.imshow(x_train[i], cmap=plt.cm.binary)
+    #     plt.xlabel(y_train[i])
+    # st.pyplot(plt.show())
 elif app_mode == 'Training Model':      
     st.title('Training Model')
     st.divider()
